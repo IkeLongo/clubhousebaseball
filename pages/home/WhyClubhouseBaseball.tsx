@@ -37,7 +37,7 @@ Clubhouse Baseball brings the important details together—so everyone can make 
           {/* Heading */}
           <h2
             id="why-clubhouse-baseball"
-            className="mt-4 text-3xl font-semibold leading-tight text-gray-800 sm:text-4xl"
+            className="mt-4 text-3xl font-semibold leading-tight text-sky-950 sm:text-4xl"
           >
             {heading}
           </h2>

@@ -84,7 +84,7 @@ export default function HowItWorksTimeline() {
             </p>
             <span className="h-px w-10 bg-sky-blue-500" aria-hidden="true" />
           </div>
-          <h2 className="mt-4 text-3xl font-semibold text-[#1F2A44] sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-semibold text-sky-950 sm:text-4xl">
             Simple by Design
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#1F2A44]/80 sm:text-lg">

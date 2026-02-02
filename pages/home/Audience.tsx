@@ -20,7 +20,7 @@ export default function Audience() {
 
           <h2
             id="who-its-for"
-            className="mt-4 text-3xl font-semibold text-gray-800 sm:text-4xl"
+            className="mt-4 text-3xl font-semibold text-sky-950 sm:text-4xl"
           >
             Built for Everyone Involved
           </h2>
