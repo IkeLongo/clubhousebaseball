@@ -1,5 +1,5 @@
 import Audience from "@/pages/home/Audience";
-import Hero from "@/pages/home/Hero";
+import Hero from "@/pages/home/HeroSection";
 import HowItWorksTimeline from "@/pages/home/HowItWorks";
 import WhyClubhouseBaseball from "@/pages/home/WhyClubhouseBaseball";
 
