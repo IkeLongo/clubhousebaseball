@@ -5,17 +5,10 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FAFAF7;
+    --foreground: #292828;
   }
 }
 
@@ -23,4 +16,87 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@theme {
+  /* Field green shades */
+  --color-field-green-500:  #2B5A43;
+  
+  /* Sky blue shades */
+  --color-sky-blue-500:  #7FC8E8;
+
+  /* Off white shades */
+  --color-off-white-500:  #FAFAF7;
+  
+  /* Leather tan shades */
+  --color-leather-tan-500:  #C49A6C;
+  
+  /* Soft navy shades */
+  --color-soft-navy-500:  #1F2A44;
+  
+  /* Fonts */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Breakpoints */
+}
+
+@layer base {
+  .hero h1 {
+    @apply text-4xl font-poppins font-bold tracking-wide;
+  }
+  .hero h2 {
+    @apply text-3xl font-poppins font-semibold tracking-wide;
+  }
+  .hero h3 {
+    @apply text-2xl font-poppins font-semibold tracking-wide;
+  }
+  .hero h4 {
+    @apply text-xl font-poppins font-semibold tracking-wide;
+  }
+  .hero h5 {
+    @apply text-lg font-poppins font-semibold tracking-wide;
+  }
+  .hero p {
+    @apply text-base font-inter font-normal;
+  }
+  .hero a {
+    @apply text-base font-inter font-normal;
+  }
+  .hero button {
+    @apply text-base font-inter font-normal;
+  }
+  /* 🔹 GLOBAL SECTION SPACING */
+  .base h1 {
+    @apply text-4xl font-poppins font-bold tracking-wide;
+  }
+  .base h2 {
+    @apply text-3xl font-poppins font-semibold tracking-wide;
+  }
+  .base h3 {
+    @apply text-2xl font-poppins font-semibold tracking-wide;
+  }
+  .base h4 {
+    @apply text-xl font-poppins font-semibold tracking-wide;
+  }
+  .base h5 {
+    @apply text-lg font-poppins font-semibold tracking-wide;
+  }
+  .base p {
+    @apply text-base font-inter font-normal;
+  }
+  .base a {
+    @apply text-base font-normal;
+  }
+  /* 🔹 GLOBAL SECTION SPACING */
+  .base section {
+    @apply py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
