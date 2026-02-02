@@ -1,9 +1,15 @@
-import Hero from "@/pages/home/hero";
+import Audience from "@/pages/home/Audience";
+import Hero from "@/pages/home/Hero";
+import HowItWorksTimeline from "@/pages/home/HowItWorks";
+import WhyClubhouseBaseball from "@/pages/home/WhyClubhouseBaseball";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <Hero />     
+    <div className="min-h-screen items-center justify-center font-sans">
+      <Hero />
+      <WhyClubhouseBaseball />
+      <Audience />
+      <HowItWorksTimeline />
     </div>
   );
 }
