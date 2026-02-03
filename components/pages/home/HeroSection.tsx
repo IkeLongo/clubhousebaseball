@@ -4,8 +4,11 @@ import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import React, { useState, useEffect } from "react";
 import { IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
+import { useRoleModal } from "@/lib/providers/role-modal-provider";
 
 export default function Hero() {
+  const { open } = useRoleModal();
+
   return (
     <section className="hero relative flex flex-col md:flex-row min-h-screen w-full overflow-hidden bg-off-white-500">
       {/* Left: Content */}
@@ -25,17 +28,22 @@ export default function Hero() {
         <div className="flex flex-col w-full max-w-xs gap-3">
           <div className="flex flex-col md:flex-row gap-3 justify-start">
             <button
+              onClick={() => open("parent", { source: "hero", cta: "Find Teams & Tryouts" })}
               className="inline-flex justify-center rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
             >
               Find Teams & Tryouts
             </button>
-            <button 
-              className="inline-flex justify-center rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+            <button
+              onClick={() => open("org", { source: "hero", cta: "List Your Organization" })}
+              className="inline-flex justify-center rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow hover:cursor-pointer transition whitespace-nowrap"
             >
               List Your Organization
             </button>
           </div>
-          <button className="flex items-center justify-center md:justify-start gap-2 rounded-lg text-field-green-500 hover:cursor-pointer font-semibold py-3 transition">
+          <button
+            onClick={() => open("director", { source: "hero", cta: "Promote a Tournament" })}
+            className="flex items-center justify-center md:justify-start gap-2 rounded-lg text-field-green-500 hover:cursor-pointer font-semibold py-3 transition"
+          >
             Promote a Tournament
             <IconChevronRight className="w-5 h-5 text-field-green-500" />
           </button>

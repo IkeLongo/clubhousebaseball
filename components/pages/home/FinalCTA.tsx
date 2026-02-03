@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useRoleModal } from "@/lib/providers/role-modal-provider";
 
 type FinalCTASectionProps = {
   className?: string;
@@ -19,6 +22,8 @@ export default function FinalCTASection({
   orgHref = "#get-listed",
   tournamentHref = "#promote-tournament",
 }: FinalCTASectionProps) {
+  const { open } = useRoleModal();
+
   return (
     <section
       className={[
@@ -64,19 +69,22 @@ export default function FinalCTASection({
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
-              className="inline-flex justify-center rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
+                onClick={() => open("parent", { source: "hero", cta: "Find Teams & Tryouts" })}
+                className="inline-flex justify-center rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
               >
                 Find Teams & Tryouts
               </button>
-              <button 
+              <button
+                onClick={() => open("org", { source: "hero", cta: "List Your Organization" })}
                 className="inline-flex justify-center rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
-                >
-                  List Your Organization
+              >
+                List Your Organization
               </button>
-              <button 
+              <button
+                onClick={() => open("director", { source: "hero", cta: "Promote a Tournament" })} 
                 className="inline-flex justify-center rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-[#7FC8E8]/50 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
-                >
-                  Promote a Tournament
+              >
+                Promote a Tournament
               </button>
             </div>
 

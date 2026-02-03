@@ -3,6 +3,7 @@ import { CenteredWithLogo } from "@/components/ui/layout/footer";
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { RoleModalProvider } from "@/lib/providers/role-modal-provider";
 
 
 const poppins = Poppins({
@@ -32,9 +33,11 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} antialiased`}
       >
-        <SimpleNavbarWithHoverEffects />
-        {children}
-        <CenteredWithLogo />
+        <RoleModalProvider>
+          <SimpleNavbarWithHoverEffects />
+          {children}
+          <CenteredWithLogo />
+        </RoleModalProvider>
       </body>
     </html>
   );

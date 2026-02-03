@@ -2,7 +2,11 @@
 import { IconChevronRight } from "@tabler/icons-react";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useRoleModal, type Role } from "@/lib/providers/role-modal-provider";
+
 export function ExpandableCardOnClick() {
+  const { open } = useRoleModal();
+
   const items = [
     {
       title: "Parents",
@@ -60,14 +64,18 @@ export function ExpandableCardOnClick() {
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActive(null);
-      }
+      if (event.key === "Escape") setActive(null);
     };
-
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
   }, []);
+
+  const titleToRole = (title: string): Role => {
+    const t = title.toLowerCase();
+    if (t.includes("parent")) return "parent";
+    if (t.includes("organization")) return "org";
+    return "director";
+  };
 
   return (
     <div className="relative h-full w-full">
@@ -112,7 +120,24 @@ export function ExpandableCardOnClick() {
                 >
                   {active.content}
                 </motion.div>
-                <button className="mt-6 w-full flex items-center justify-center gap-2 rounded-lg bg-field-green-500 py-2.5 text-sm font-semibold text-white transition hover:bg-field-green-600">
+                {/* ✅ CTA opens GLOBAL role modal */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+
+                    const role = titleToRole(active.title);
+
+                    open(role, {
+                      source: "expandable-card",
+                      cardTitle: active.title,
+                      ctaText: active.cta,
+                    });
+
+                    // optional: close expanded card after opening form
+                    setActive(null);
+                  }}
+                  className="mt-6 w-full flex items-center justify-center gap-2 rounded-lg bg-field-green-500 py-2.5 text-sm font-semibold text-white transition hover:bg-field-green-600"
+                >
                   <span>{active.cta.replace(/\s*>$/, "")}</span>
                   <IconChevronRight className="w-5 h-5 text-white" />
                 </button>

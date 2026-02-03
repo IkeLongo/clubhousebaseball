@@ -77,7 +77,7 @@ export default function PhilosophyTrustSection({
         </div>
 
         {/* Optional CTA row */}
-        <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        {/* <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button
             className="inline-flex rounded-lg bg-transparent text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-white/10 hover:cursor-pointer"
           >
@@ -88,7 +88,7 @@ export default function PhilosophyTrustSection({
             >
               List Your Organization
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
