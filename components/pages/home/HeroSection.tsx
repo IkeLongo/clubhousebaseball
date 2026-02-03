@@ -55,11 +55,12 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full hero-image-clip"
         >
           <Image
-            src="/players_huddling_around_baseball_coach.webp"
+            src="/players_huddling_around_baseball_coach_2.png"
             alt="Clubhouse Hero"
             width={600}
             height={400}
             className="object-cover object-top w-full h-full"
+            priority
           />
         </div>
       </div>
