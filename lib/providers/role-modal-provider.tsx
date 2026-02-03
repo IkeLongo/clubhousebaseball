@@ -10,6 +10,7 @@ import React, {
   useState,
 } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { LoaderOne } from "@/components/ui/loader";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 export type Role = "parent" | "org" | "director";
@@ -115,10 +116,16 @@ export function RoleModalProvider({ children }: { children: React.ReactNode }) {
   const id = useId();
 
   const open = (role: Role, meta?: Record<string, any>) => {
-    setMeta(meta ?? null); // nice for tracking (source: "hero", etc.)
+    setMeta({
+      ...(meta ?? {}),
+      openedAt: Date.now(), // ✅ added here
+    });
     setActiveRole(role);
   };
-  const close = () => setActiveRole(null);
+  const close = () => {
+    setActiveRole(null);
+    setMeta(null);
+  };
 
   useOutsideClick(ref, close);
 
@@ -204,6 +211,7 @@ function RoleForm({
 }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -236,7 +244,9 @@ function RoleForm({
       });
 
       if (!res.ok) throw new Error("Failed to submit");
-      onSuccess();
+      setSuccess(true);
+      // Optionally call onSuccess() to close modal after a delay
+      // setTimeout(onSuccess, 2000);
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -244,8 +254,29 @@ function RoleForm({
     }
   }
 
+  if (success) {
+    return (
+      <div className="py-8 text-center">
+        <div className="mb-4 flex justify-center">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-green-500"><circle cx="12" cy="12" r="10" strokeWidth="2" /><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M8 12l2.5 2.5L16 9" /></svg>
+        </div>
+        <h3 className="text-lg font-bold mb-2">Thank you!</h3>
+        <p className="text-neutral-700">Your message has been sent. We'll be in touch soon.</p>
+      </div>
+    );
+  }
+
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      {/* Honeypot field for spam prevention */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+      />
+
       {config.fields.map((field) => (
         <Field key={field.name} field={field} />
       ))}
@@ -255,9 +286,9 @@ function RoleForm({
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-xl bg-neutral-900 text-white py-3 font-semibold disabled:opacity-60"
+        className="w-full rounded-xl bg-neutral-900 text-white py-3 font-semibold disabled:opacity-60 flex items-center justify-center"
       >
-        {submitting ? "Sending..." : config.submitText}
+        {submitting ? <LoaderOne /> : config.submitText}
       </button>
 
       <p className="text-xs text-neutral-500">Discovery mode only. No spam.</p>

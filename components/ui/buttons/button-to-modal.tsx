@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 import type { Role, FieldConfig, RoleConfig } from "@/lib/types/types";
-import { ROLE_CONFIG } from "@/lib/role-config";
+import { ROLE_CONFIG } from "@/lib/types/role-config";
 
 type Props = {
   children?: React.ReactNode;

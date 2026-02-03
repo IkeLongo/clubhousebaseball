@@ -1,5 +1,5 @@
 // role-config.ts
-import type { RoleConfig } from "./types/types";
+import type { RoleConfig } from "./types";
 
 export const ROLE_CONFIG: Record<string, RoleConfig> = {
   parent: {

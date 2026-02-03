@@ -116,7 +116,7 @@ const Logo = () => {
       className="relative z-20 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src="/clubhouse_baseball_logo (2).webp"
+        src="/clubhouse_baseball_logo_2.webp"
         alt="logo"
         width={200}
         height={200}
