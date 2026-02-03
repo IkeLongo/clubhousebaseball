@@ -64,17 +64,17 @@ export default function FinalCTASection({
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
-              className="inline-flex rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
+              className="inline-flex justify-center rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
               >
                 Find Teams & Tryouts
               </button>
               <button 
-                className="inline-flex rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+                className="inline-flex justify-center rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
                 >
                   List Your Organization
               </button>
               <button 
-                className="inline-flex rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-[#7FC8E8]/50 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+                className="inline-flex justify-center rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-[#7FC8E8]/50 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
                 >
                   Promote a Tournament
               </button>
