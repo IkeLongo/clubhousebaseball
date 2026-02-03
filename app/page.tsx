@@ -1,7 +1,7 @@
 import Audience from "@/pages/home/Audience";
 import FinalCTASection from "@/pages/home/FinalCTA";
 import Hero from "@/pages/home/HeroSection";
-import { HowItWorksTimeline } from "@/pages/home/HowItWorks";
+import { HowItWorksTimeline } from "@/pages/home/HowItWorksTimeline";
 import PhilosophyTrustSection from "@/pages/home/PhilosophyTrust";
 import Testimonials from "@/pages/home/Testimonials";
 import WhyClubhouseBaseball from "@/pages/home/WhyClubhouseBaseball";
