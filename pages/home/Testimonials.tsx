@@ -17,6 +17,7 @@ export default function Testimonials() {
       src: "/coach_with_players.webp",
     },
   ];
+  
   return (
     <div className="base relative overflow-hidden w-full h-full py-20">
       <Carousel slides={slideData} />
