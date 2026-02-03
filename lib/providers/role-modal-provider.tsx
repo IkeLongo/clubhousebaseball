@@ -14,7 +14,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 
 export type Role = "parent" | "org" | "director";
 
-type FieldType = "text" | "email" | "select" | "textarea";
+type FieldType = "text" | "email" | "select" | "textarea" | "multiselect";
 
 type FieldConfig = {
   name: string;
@@ -44,12 +44,13 @@ const ROLE_CONFIG: Record<Role, RoleConfig> = {
       {
         name: "priority",
         label: "What matters most?",
-        type: "select",
+        type: "multiselect",
         options: [
-          { label: "Schedules", value: "schedules" },
+          { label: "Cost & Fees", value: "cost_fees" },
+          { label: "Organization Reputation", value: "organization_reputation" },
           { label: "Communication", value: "communication" },
-          { label: "Tryouts", value: "tryouts" },
-          { label: "Tournaments", value: "tournaments" },
+          { label: "Tryout Dates & Process", value: "tryout_dates_process" },
+          { label: "Playing Time Expectation", value: "playing_time_expectation" },
         ],
       },
     ],
@@ -210,7 +211,18 @@ function RoleForm({
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
+    const payload: Record<string, any> = {};
+    for (const [key, value] of formData.entries()) {
+      if (payload[key]) {
+        if (Array.isArray(payload[key])) {
+          payload[key].push(value);
+        } else {
+          payload[key] = [payload[key], value];
+        }
+      } else {
+        payload[key] = value;
+      }
+    }
 
     try {
       const res = await fetch("/api/leads", {
@@ -275,6 +287,20 @@ function Field({ field }: { field: FieldConfig }) {
             </option>
           ))}
         </select>
+      ) : field.type === "multiselect" ? (
+        <div className="flex flex-col gap-2">
+          {(field.options ?? []).map((opt) => (
+            <label key={opt.value} className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                name={field.name}
+                value={opt.value}
+                className="rounded border-gray-300 focus:ring-2 focus:ring-neutral-900/20"
+              />
+              {opt.label}
+            </label>
+          ))}
+        </div>
       ) : field.type === "textarea" ? (
         <textarea
           name={field.name}

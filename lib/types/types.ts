@@ -1,7 +1,7 @@
 // types.ts
 export type Role = "parent" | "org" | "director";
 
-export type FieldType = "text" | "email" | "select" | "textarea";
+export type FieldType = "text" | "email" | "select" | "textarea" | "multiselect";
 
 export type FieldConfig = {
   name: string;

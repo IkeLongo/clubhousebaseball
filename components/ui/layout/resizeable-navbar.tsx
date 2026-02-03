@@ -184,10 +184,10 @@ const Logo = () => {
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src="/clubhouse_baseball_logo_trans.webp"
+        src="/clubhouse_baseball_logo_3.webp"
         alt="Clubhouse Baseball Logo"
-        width={80}
-        height={70}
+        width={100}
+        height={80}
       />
     </Link>
   );

@@ -12,12 +12,13 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       {
         name: "priority",
         label: "What matters most?",
-        type: "select",
+        type: "multiselect",
         options: [
-          { label: "Schedules", value: "schedules" },
+          { label: "Cost & Fees", value: "cost_fees" },
+          { label: "Organization Reputation", value: "organization_reputation" },
           { label: "Communication", value: "communication" },
-          { label: "Tournaments", value: "tournaments" },
-          { label: "Team updates", value: "updates" },
+          { label: "Tryout Dates & Process", value: "tryout_dates_process" },
+          { label: "Playing Time Expectation", value: "playing_time_expectation" },
         ],
       },
     ],
