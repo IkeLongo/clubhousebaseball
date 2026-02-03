@@ -11,9 +11,9 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-1/2 pl-20 px-6 py-12 md:py-24">
         <p className="text-sm font-semibold text-field-green-500 mb-2 uppercase tracking-wider">Step Inside the Clubhouse</p>
         <h1 className="text-left text-2xl font-bold tracking-tighter text-field-green-500 md:text-6xl">
-          Build for<br />
+          Built for<br />
           <TypewriterEffect
-            words={["Baseball Parents", "Select Organizations", "Tournament Directors"]}
+            words={["Parents", "Organizations", "Tournaments"]}
             typingSpeed={80}
             duration={800}
             deletingSpeed={75}
@@ -23,10 +23,18 @@ export default function Hero() {
         <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-xl">Clubhouse Baseball brings parents, organizations, and tournaments together in one clear, trusted place — without the noise.</p>
         <div className="flex flex-col w-full max-w-xs gap-3">
           <div className="flex flex-row gap-3 justify-start">
-            <button className="inline-flex rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow hover:bg-field-green-600 transition whitespace-nowrap">Find Teams & Tryouts</button>
-            <button className="inline-flex rounded-lg bg-off-white-500 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow hover:bg-field-green-600 transition whitespace-nowrap">List Your Organization</button>
+            <button
+            className="inline-flex rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
+            >
+              Find Teams & Tryouts
+            </button>
+            <button 
+              className="inline-flex rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+              >
+                List Your Organization
+            </button>
           </div>
-          <button className="flex items-center justify-start gap-2 rounded-lg text-field-green-500 font-semibold py-3 transition">
+          <button className="flex items-center justify-start gap-2 rounded-lg text-field-green-500 hover:cursor-pointer font-semibold py-3 transition">
             Promote a Tournament
             <IconChevronRight className="w-5 h-5 text-field-green-500" />
           </button>

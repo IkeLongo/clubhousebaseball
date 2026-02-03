@@ -1,4 +1,5 @@
 import { SimpleNavbarWithHoverEffects } from "@/components/ui/layout/resizeable-navbar";
+import { CenteredWithLogo } from "@/components/ui/layout/footer";
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
@@ -33,6 +34,7 @@ export default function RootLayout({
       >
         <SimpleNavbarWithHoverEffects />
         {children}
+        <CenteredWithLogo />
       </body>
     </html>
   );

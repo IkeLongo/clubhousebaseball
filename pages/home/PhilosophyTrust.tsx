@@ -9,7 +9,7 @@ type PhilosophyTrustSectionProps = {
 export default function PhilosophyTrustSection({
   className = "",
   heading = "Clubhouse Baseball is not a ranking site.",
-  subheading = "We don’t score teams or fuel drama. We focus on clarity, expectations, and helping families and organizations make better decisions—before anyone commits.",
+  subheading = "We don’t score teams or fuel drama. We focus on clarity, expectations, and helping families and organizations make better decisions — before anyone commits.",
 }: PhilosophyTrustSectionProps) {
   return (
     <section
@@ -78,19 +78,16 @@ export default function PhilosophyTrustSection({
 
         {/* Optional CTA row */}
         <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href="#parents"
-            className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#2B5A43] shadow-sm transition hover:bg-white/90 sm:w-auto"
+          <button
+            className="inline-flex rounded-lg bg-transparent text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-white/10 hover:cursor-pointer"
           >
             Find Teams & Tryouts
-          </a>
-
-          <a
-            href="#get-listed"
-            className="inline-flex w-full items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
-          >
-            List Your Organization
-          </a>
+          </button>
+          <button 
+            className="inline-flex rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+            >
+              List Your Organization
+          </button>
         </div>
       </div>
     </section>

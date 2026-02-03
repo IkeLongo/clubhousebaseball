@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
 
 function PreviewPlaceholder({ label }: { label: string }) {
@@ -26,8 +27,8 @@ export default function HowItWorksTimeline() {
 
           {/* Optional previews (placeholders) */}
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <PreviewPlaceholder label="Organization Profile (preview)" />
-            <PreviewPlaceholder label="Tournament Listing (preview)" />
+            <Image src="/youth-baseball-team-and-coach-on-pitch-2026-01-11-08-07-36-utc_11zon.webp" alt="Organization Profile Preview" width={400} height={112} className="h-28 w-full object-cover object-top rounded-xl border border-[#2B5A43]/10 bg-white shadow-sm" />
+            <Image src="/baseball-coach-explaining-strategy-to-youth-team-p-2026-01-09-12-10-13-utc_11zon.webp" alt="Tournament Listing Preview" width={400} height={112} className="h-28 w-full object-cover rounded-xl border border-[#2B5A43]/10 bg-white shadow-sm" />
           </div>
         </div>
       ),
@@ -45,8 +46,8 @@ export default function HowItWorksTimeline() {
           </p>
 
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <PreviewPlaceholder label="Tryouts Feed (preview)" />
-            <PreviewPlaceholder label="Team Finder / Filters (preview)" />
+            <Image src="/kids-baseball-tournament-with-family-audience-2026-01-05-00-23-33-utc_11zon.webp" alt="Tryouts Feed Preview" width={400} height={112} className="h-28 w-full object-cover object-bottom rounded-xl border border-[#2B5A43]/10 bg-white shadow-sm" />
+            <Image src="/kids-baseball-team-2026-01-05-00-22-38-utc_11zon.webp" alt="Team Finder Preview" width={400} height={112} className="h-28 w-full object-cover object-bottom rounded-xl border border-[#2B5A43]/10 bg-white shadow-sm" />
           </div>
         </div>
       ),
@@ -64,8 +65,8 @@ export default function HowItWorksTimeline() {
           </p>
 
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <PreviewPlaceholder label="Contact / Interest Form (preview)" />
-            <PreviewPlaceholder label="Metrics (views & clicks) (preview)" />
+            <Image src="/youth-baseball-team-celebrating-success-during-gol-2026-01-17-22-30-13-utc_11zon.webp" alt="Contact / Interest Form Preview" width={400} height={112} className="h-28 w-full object-cover rounded-xl border border-[#2B5A43]/10 bg-white shadow-sm" />
+            <Image src="/ready-to-roll-2026-01-05-00-22-41-utc_11zon.webp" alt="Metrics Preview" width={400} height={112} className="h-28 w-full object-cover object-bottom rounded-xl border border-[#2B5A43]/10 bg-white shadow-sm" />
           </div>
         </div>
       ),

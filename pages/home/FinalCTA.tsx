@@ -63,26 +63,21 @@ export default function FinalCTASection({
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <a
-                href={primaryHref}
-                className="inline-flex w-full items-center justify-center rounded-full bg-[#2B5A43] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#234A37] sm:w-auto"
+              <button
+              className="inline-flex rounded-lg bg-field-green-500 text-white font-semibold py-3 px-6 shadow border border-white/30 transition whitespace-nowrap hover:bg-field-green-500/90 hover:cursor-pointer"
               >
                 Find Teams & Tryouts
-              </a>
-
-              <a
-                href={orgHref}
-                className="inline-flex w-full items-center justify-center rounded-full border border-[#2B5A43]/25 bg-white px-6 py-3 text-sm font-semibold text-[#2B5A43] shadow-sm transition hover:bg-[#FAFAF7] sm:w-auto"
-              >
-                List Your Organization
-              </a>
-
-              <a
-                href={tournamentHref}
-                className="inline-flex w-full items-center justify-center rounded-full border border-[#7FC8E8]/50 bg-white px-6 py-3 text-sm font-semibold text-[#1F2A44] shadow-sm transition hover:bg-[#FAFAF7] sm:w-auto"
-              >
-                Promote a Tournament
-              </a>
+              </button>
+              <button 
+                className="inline-flex rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-gray-200 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+                >
+                  List Your Organization
+              </button>
+              <button 
+                className="inline-flex rounded-lg bg-white hover:bg-white/90 text-field-green-500 border border-[#7FC8E8]/50 font-semibold py-3 px-6 shadow  hover:cursor-pointer transition whitespace-nowrap"
+                >
+                  Promote a Tournament
+              </button>
             </div>
 
             {/* Small trust line */}

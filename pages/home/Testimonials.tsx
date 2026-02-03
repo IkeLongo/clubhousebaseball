@@ -1,7 +1,8 @@
 "use client";
 
 import { Carousel } from "@/components/ui/carousel";
-export function Testimonials() {
+
+export default function Testimonials() {
   const slideData = [
     {
       title: "Launching community by community",
