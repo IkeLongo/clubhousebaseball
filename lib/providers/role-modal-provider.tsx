@@ -118,8 +118,18 @@ export function RoleModalProvider({ children }: { children: React.ReactNode }) {
   const open = (role: Role, meta?: Record<string, any>) => {
     setMeta({
       ...(meta ?? {}),
-      openedAt: Date.now(), // ✅ added here
+      openedAt: Date.now(),
     });
+
+    // Fire Google Analytics event
+    if (typeof window !== "undefined") {
+      (window as any).gtag?.("event", "cta_opened", {
+        role,
+        source: meta?.source,
+        label: meta?.label,
+      });
+    }
+
     setActiveRole(role);
   };
   const close = () => {
@@ -245,6 +255,15 @@ function RoleForm({
 
       if (!res.ok) throw new Error("Failed to submit");
       setSuccess(true);
+
+      // Fire Google Analytics event
+      if (typeof window !== "undefined") {
+        (window as any).gtag?.("event", "lead_submitted", {
+          role: config.role,
+          source: meta?.source,
+          label: meta?.label,
+        });
+      }
       // Optionally call onSuccess() to close modal after a delay
       // setTimeout(onSuccess, 2000);
     } catch {
