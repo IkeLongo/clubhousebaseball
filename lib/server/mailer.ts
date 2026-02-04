@@ -21,21 +21,16 @@ function createTransporter() {
 }
 
 export async function sendMail(mailOptions: nodemailer.SendMailOptions) {
-  console.log("[Mailer] sendMail called with options:", { to: mailOptions.to, from: mailOptions.from, subject: mailOptions.subject });
   
   // Always create a new transporter for serverless environments
-  console.log("[Mailer] Creating transporter...");
   const mailer = createTransporter();
-  console.log("[Mailer] Transporter created");
 
   // Verify connection configuration
   await new Promise((resolve, reject) => {
     mailer.verify(function (error, success) {
       if (error) {
-        console.error("[Mailer] verify error:", error);
         reject(error);
       } else {
-        console.log("[Mailer] Server is ready to take our messages");
         resolve(success);
       }
     });
@@ -45,10 +40,8 @@ export async function sendMail(mailOptions: nodemailer.SendMailOptions) {
   return await new Promise((resolve, reject) => {
     mailer.sendMail(mailOptions, (err, info) => {
       if (err) {
-        console.error("[Mailer] sendMail error:", err);
         reject(err);
       } else {
-        console.log("[Mailer] sendMail info:", info);
         resolve(info);
       }
     });

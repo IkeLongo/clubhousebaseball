@@ -12,15 +12,11 @@ export type LeadNotifyPayload = {
 };
 
 export async function sendLeadNotification(payload: LeadNotifyPayload) {
-  console.log("[LeadNotify] Starting sendLeadNotification", { role: payload.role, email: payload.email });
   
   const to = process.env.LEAD_NOTIFY_TO;
   const from = process.env.LEAD_NOTIFY_FROM;
 
-  console.log("[LeadNotify] Email config check", { to: to ? "set" : "missing", from: from ? "set" : "missing" });
-
   if (!to || !from) {
-    console.warn("[LeadNotify] LEAD_NOTIFY_TO or LEAD_NOTIFY_FROM not configured, skipping email");
     // Not configured => silently skip
     return;
   }
@@ -43,8 +39,6 @@ export async function sendLeadNotification(payload: LeadNotifyPayload) {
   ]
     .filter(Boolean)
     .join("\n");
-
-  console.log("[LeadNotify] Attempting to send email", { to, from, subject });
   
   try {
     const result = await sendMail({
@@ -53,10 +47,8 @@ export async function sendLeadNotification(payload: LeadNotifyPayload) {
       subject,
       text,
     });
-    console.log("[LeadNotify] Email sent successfully", result);
     return result;
   } catch (err) {
-    console.error("[LeadNotify] Failed to send email", err);
     throw err;
   }
 }
