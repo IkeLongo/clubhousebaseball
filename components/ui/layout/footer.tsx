@@ -49,9 +49,20 @@ export function CenteredWithLogo() {
           <GridLineHorizontal className="mx-auto mt-8 max-w-7xl" />
         </div>
         <div className="mt-8 flex w-full flex-col items-center justify-between sm:flex-row">
-          <p className="mb-8 text-white sm:mb-0">
-            &copy; Clubhouse LLC
-          </p>
+          <div className="mb-8 flex flex-col items-center sm:mb-0 sm:items-start">
+            <p className="text-white">&copy; Clubhouse LLC</p>
+            <p className="mt-1 text-xs text-white/70">
+              Crafted by{' '}
+              <a
+                href="https://rivercitycreatives.com"
+                target="_blank"
+                rel="noopener"
+                className="underline hover:text-white"
+              >
+                Rivercity Creatives
+              </a>
+            </p>
+          </div>
           <div className="flex gap-4">
             {/* <Link href="#">
               <IconBrandTwitter className="h-6 w-6 text-neutral-500" />
