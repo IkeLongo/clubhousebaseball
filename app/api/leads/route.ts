@@ -120,7 +120,6 @@ export async function POST(req: Request) {
     `;
 
     await pool.execute(sql, [id, emailRaw, role, source, ctaLabel, payload, ua, ip]);
-    console.log("[API/Leads] Lead saved to database, attempting to send notification");
 
     // IMPORTANT: Await the email notification to prevent serverless function from terminating early
     try {
@@ -134,15 +133,12 @@ export async function POST(req: Request) {
         ip,
         userAgent: ua,
       });
-      console.log("[API/Leads] Email notification sent successfully");
     } catch (err) {
-      console.error("[API/Leads] Lead notify failed:", err);
       // Don't fail the request if email fails - lead is already saved
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Lead submit error:", error);
     const msg = (error as Error)?.message ?? "Unknown error";
     return NextResponse.json(
       { success: false, error: "Failed to store lead", details: msg },

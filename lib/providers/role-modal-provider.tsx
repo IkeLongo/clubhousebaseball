@@ -106,6 +106,15 @@ export function useRoleModal() {
   return ctx;
 }
 
+function pushDL(eventName: string, params: Record<string, any>) {
+  if (typeof window === "undefined") return;
+  (window as any).dataLayer = (window as any).dataLayer || [];
+  (window as any).dataLayer.push({
+    event: eventName,
+    ...params,
+  });
+}
+
 export function RoleModalProvider({ children }: { children: React.ReactNode }) {
   const [activeRole, setActiveRole] = useState<Role | null>(null);
   const [meta, setMeta] = useState<Record<string, any> | null>(null);
@@ -121,14 +130,11 @@ export function RoleModalProvider({ children }: { children: React.ReactNode }) {
       openedAt: Date.now(),
     });
 
-    // Fire Google Analytics event
-    if (typeof window !== "undefined") {
-      (window as any).gtag?.("event", "cta_opened", {
-        role,
-        source: meta?.source,
-        label: meta?.label,
-      });
-    }
+    pushDL("cta_opened", {
+      role,
+      source: meta?.source ?? null,
+      label: meta?.label ?? null,
+    });
 
     setActiveRole(role);
   };
@@ -256,16 +262,11 @@ function RoleForm({
       if (!res.ok) throw new Error("Failed to submit");
       setSuccess(true);
 
-      // Fire Google Analytics event
-      if (typeof window !== "undefined") {
-        (window as any).gtag?.("event", "lead_submitted", {
-          role: config.role,
-          source: meta?.source,
-          label: meta?.label,
-        });
-      }
-      // Optionally call onSuccess() to close modal after a delay
-      // setTimeout(onSuccess, 2000);
+      pushDL("lead_submitted", {
+        role: config.role,
+        source: meta?.source ?? null,
+        label: meta?.label ?? null,
+      });
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
