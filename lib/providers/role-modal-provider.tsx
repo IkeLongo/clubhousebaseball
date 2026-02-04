@@ -286,7 +286,7 @@ function RoleForm({
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-xl bg-neutral-900 text-white py-3 font-semibold disabled:opacity-60 flex items-center justify-center"
+        className="w-full rounded-xl bg-neutral-900 text-white h-12 font-semibold disabled:opacity-60 flex items-center justify-center"
       >
         {submitting ? <LoaderOne /> : config.submitText}
       </button>

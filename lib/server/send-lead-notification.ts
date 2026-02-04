@@ -1,4 +1,4 @@
-import { getMailer } from "@/lib/server/mailer";
+import { sendMail } from "@/lib/server/mailer";
 
 export type LeadNotifyPayload = {
   role: "parent" | "org" | "director";
@@ -40,8 +40,7 @@ export async function sendLeadNotification(payload: LeadNotifyPayload) {
     .join("\n");
 
   try {
-    const mailer = getMailer();
-    const result = await mailer.sendMail({
+    const result = await sendMail({
       to,
       from,
       subject,
