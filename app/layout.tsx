@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { RoleModalProvider } from "@/lib/providers/role-modal-provider";
-
+import Script from "next/script";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -113,6 +113,20 @@ export default function RootLayout({
           {children}
           <CenteredWithLogo />
         </RoleModalProvider>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
