@@ -120,17 +120,25 @@ export async function POST(req: Request) {
     `;
 
     await pool.execute(sql, [id, emailRaw, role, source, ctaLabel, payload, ua, ip]);
+    console.log("[API/Leads] Lead saved to database, attempting to send notification");
 
-    sendLeadNotification({
-      role,
-      email: emailRaw,
-      source,
-      ctaLabel,
-      meta: body?.meta ?? null,
-      data: body, // optional (can remove if too noisy)
-      ip,
-      userAgent: ua,
-    }).catch((err) => console.error("Lead notify failed:", err));
+    // IMPORTANT: Await the email notification to prevent serverless function from terminating early
+    try {
+      await sendLeadNotification({
+        role,
+        email: emailRaw,
+        source,
+        ctaLabel,
+        meta: body?.meta ?? null,
+        data: body, // optional (can remove if too noisy)
+        ip,
+        userAgent: ua,
+      });
+      console.log("[API/Leads] Email notification sent successfully");
+    } catch (err) {
+      console.error("[API/Leads] Lead notify failed:", err);
+      // Don't fail the request if email fails - lead is already saved
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

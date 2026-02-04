@@ -21,8 +21,12 @@ function createTransporter() {
 }
 
 export async function sendMail(mailOptions: nodemailer.SendMailOptions) {
+  console.log("[Mailer] sendMail called with options:", { to: mailOptions.to, from: mailOptions.from, subject: mailOptions.subject });
+  
   // Always create a new transporter for serverless environments
+  console.log("[Mailer] Creating transporter...");
   const mailer = createTransporter();
+  console.log("[Mailer] Transporter created");
 
   // Verify connection configuration
   await new Promise((resolve, reject) => {
